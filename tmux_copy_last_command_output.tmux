@@ -10,4 +10,4 @@ default_prompt_pattern=" ) "
 PROMPT_PATTERN=$(tmux show-option -gqv @command-copy-prompt-pattern)
 PROMPT_PATTERN=${PROMPT_PATTERN:-$default_prompt_pattern}
 
-tmux bind $CAPTURE_KEY new-window -n -d last-command-output -e PROMPT_PATTERN="$PROMPT_PATTERN" "$CURRENT_DIR/plugin.sh"
+tmux bind $CAPTURE_KEY new-window -n last-command-output -e PROMPT_PATTERN="$PROMPT_PATTERN" "$CURRENT_DIR/plugin.sh"
