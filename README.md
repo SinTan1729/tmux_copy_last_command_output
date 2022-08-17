@@ -14,7 +14,7 @@ Hit <kbd>prefix</kbd> + <kbd>I</kbd> to fetch and source the plugin.
 
 Clone the repo:
 
-    git clone https://github.com/SinTan1729/tmux_copy_last_command_output.git $XDG_CONFIG_HOME/tmux/plugins/tmux_copy_last_command_output
+    git clone https://github.com/SinTan1729/tmux_copy_last_command_output.git ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/plugins/tmux_copy_last_command_output
 
 Source it in your `.tmux.conf` (or `$XDG_CONFIG_HOME/tmux/tmux.conf`):
 
