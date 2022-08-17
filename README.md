@@ -1,12 +1,12 @@
-# Tmux Capture Last Command Output
+# Tmux Copy Last Command Output
 
-Capture the output of the last terminal command and open it an editor in a separate tmux window. 
+Capture the output of the last terminal command and copy it to clipboard.
 
 ## Installation
 
 ### Using [TPM](https://github.com/tmux-plugins/tpm):
 
-    set -g @plugin 'artemave/tmux_capture_last_command_output'
+    set -g @plugin 'SinTan1729/tmux_copy_last_command_output'
 
 Hit <kbd>prefix</kbd> + <kbd>I</kbd> to fetch and source the plugin.
 
@@ -14,38 +14,30 @@ Hit <kbd>prefix</kbd> + <kbd>I</kbd> to fetch and source the plugin.
 
 Clone the repo:
 
-    git clone https://github.com/artemave/tmux_capture_last_command_output.git ~/.tmux/plugins/tmux_capture_last_command_output
+    git clone https://github.com/SinTan1729/tmux_copy_last_command_output.git $XDG_CONFIG_HOME/tmux/plugins/tmux_copy_last_command_output
 
-Source it in your `.tmux.conf`:
+Source it in your `.tmux.conf` (or `$XDG_CONFIG_HOME/tmux/tmux.conf`):
 
-    run-shell ~/.tmux/plugins/tmux_capture_last_command_output/tmux_capture_last_command_output.tmux
+    run-shell ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/plugins/tmux_copy_last_command_output/tmux_copy_last_command_output.tmux
 
 Reload TMUX conf by running:
 
-    tmux source-file ~/.tmux.conf
+    tmux source-file $XDG_CONFIG_HOME/tmux/tmux.conf
 
 ## Configuration
 
-#### @command-capture-key
+#### @command-copy-key
 
-Required. Set Prefix + key to trigger the plugin. For example, `prefix+t`:
-
-```
-set -g @command-capture-key t
-```
-
-#### @command-capture-prompt-pattern
-
-Required. A regexp to identify command separator. Usually a prompt. E.g., if set to '] % ', the plugin will capture the latest output up until the first line that contains '] % ':
+Required. Set Prefix + key to trigger the plugin. For example, `prefix+g`:
 
 ```
-set -g @command-capture-prompt-pattern '] % '
+set -g @command-copy-key g
 ```
 
-#### @command-capture-editor-cmd
+#### @command-copy-prompt-pattern
 
-Optional. An editor to use for the captured output. Defaults to `$EDITOR -`, which works with vim/nvim. Example:
+Required. A regexp to identify command separator. Usually a prompt. E.g., if set to ' ) ', the plugin will capture the latest output up until the first line that contains ' ) ':
 
 ```
-set -g @command-capture-editor-cmd 'nvim -'
+set -g @command-copy-prompt-pattern ' ) '
 ```
