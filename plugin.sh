@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-x=$(tmux capture-pane -p -S '-' -J -t !)
-PROMPT_PATTERN=${1:-' ) '}
-result=$(echo "$x" | tac | sed -e "0,/$PROMPT_PATTERN/d" | sed "/$PROMPT_PATTERN/,\$d" | tac)
-echo -n "$result" | xsel -ib
+x=$(tmux capture-pane -p -S - -J -t !)
+result=$(printf '%s\n' "$x" | tac | sed -e "0,/$PROMPT_PATTERN/d" | sed "/$PROMPT_PATTERN/,\$d" | tac)
+printf '%s' "$result" | wl-copy
